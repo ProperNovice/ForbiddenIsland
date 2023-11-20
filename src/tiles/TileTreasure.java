@@ -1,9 +1,27 @@
 package tiles;
 
-import treasures.Treasure;
+import enums.EIslandLocation;
+import enums.ETreasure;
+import utils.Logger;
 
-public abstract class TileTreasure extends Tile {
+public class TileTreasure extends Tile {
 
-	public abstract Class<? extends Treasure> getTreasure();
+	private ETreasure eTreasure = null;
+
+	public TileTreasure(EIslandLocation eIslandLocation, ETreasure eTreasure) {
+
+		super(eIslandLocation);
+		this.eTreasure = eTreasure;
+
+	}
+
+	@Override
+	protected void printCredentials() {
+		Logger.INSTANCE.log(this.eTreasure);
+	}
+
+	public ETreasure getETreasure() {
+		return this.eTreasure;
+	}
 
 }

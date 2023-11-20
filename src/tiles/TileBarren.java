@@ -1,5 +1,11 @@
 package tiles;
 
-public abstract class TileBarren extends Tile {
+import enums.EIslandLocation;
+
+public class TileBarren extends Tile {
+
+	public TileBarren(EIslandLocation eIslandLocation) {
+		super(eIslandLocation);
+	}
 
 }

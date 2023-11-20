@@ -1,9 +1,27 @@
 package tiles;
 
-import adventurers.Adventurer;
+import enums.EAdventurer;
+import enums.EIslandLocation;
+import utils.Logger;
 
-public abstract class TileAdventurer {
+public class TileAdventurer extends Tile {
 
-	public abstract Class<? extends Adventurer> getAdventurer();
+	private EAdventurer eAdventurer = null;
+
+	public TileAdventurer(EIslandLocation eIslandLocation, EAdventurer eAdventurer) {
+
+		super(eIslandLocation);
+		this.eAdventurer = eAdventurer;
+
+	}
+
+	@Override
+	protected void printCredentials() {
+		Logger.INSTANCE.log(this.eAdventurer);
+	}
+
+	public EAdventurer getEAdventurer() {
+		return this.eAdventurer;
+	}
 
 }
