@@ -21,7 +21,7 @@ public enum Credentials {
 
 		// frame
 
-		this.dFrame = new Vector2(2560 - 4 - 636, 1368);
+		this.dFrame = new Vector2(2560 - 4 - 636, 1368 - 2);
 
 		// gaps
 
@@ -44,9 +44,6 @@ public enum Credentials {
 		x = this.gapBetweenBorders;
 		y = this.gapBetweenBorders;
 		this.cImageViewClone = new Vector2(x, y);
-
-		System.out.println(
-				(this.dFrame.y - 2 * this.gapBetweenBorders - 5 * this.dGapBetweenComponents.y) / 6);
 
 	}
 

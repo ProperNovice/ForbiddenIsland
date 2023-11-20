@@ -1,5 +1,6 @@
 package business;
 
+import tiles.Tile;
 import utils.ArrayList;
 import utils.Interfaces.IImageViewAble;
 import utils.ListImageViewAbles;
@@ -9,8 +10,11 @@ public enum ListsManager {
 	INSTANCE;
 
 	public final ArrayList<ListImageViewAbles<IImageViewAble>> lists = new ArrayList<ListImageViewAbles<IImageViewAble>>();
+	public ArrayList<Tile> tiles;
 
 	public void instantiate() {
+
+		this.tiles = new ArrayList<>();
 
 	}
 

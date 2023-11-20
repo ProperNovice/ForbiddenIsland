@@ -6,6 +6,12 @@ public enum InstantiateComponents {
 
 	private InstantiateComponents() {
 
+		instantiateTiles();
+
+	}
+
+	private void instantiateTiles() {
+
 	}
 
 }
