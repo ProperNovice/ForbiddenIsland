@@ -34,7 +34,7 @@ public enum Sleep {
 		this.sleeping.stop();
 		CursorFX.INSTANCE.setDefault();
 
-		Logger.INSTANCE.logNewLine("awake");
+		Logger.INSTANCE.logNewLine("awakened");
 
 		Platform.exitNestedEventLoop(this.lockObject, null);
 

@@ -18,6 +18,7 @@ public enum Credentials {
 	public Vector2 dTile, dCard;
 	public Vector2 cBoardPosition, cDeckFlood, cDiscardPileFlood, cDeckTreasure,
 			cDiscardPileTreasure;
+	public double tileActionPercentage = 1;
 
 	private Credentials() {
 

@@ -4,6 +4,8 @@ import cards.CardFlood;
 import enums.EIslandLocation;
 import gameStatesDefault.GameState;
 import model.Island;
+import tileAction.TileActionEmbiggen;
+import tileAction.TileActionShrink;
 import tiles.Tile;
 
 public class DrawFloodCard extends GameState {
@@ -33,8 +35,24 @@ public class DrawFloodCard extends GameState {
 		EIslandLocation eIslandLocation = this.cardFlood.getEIslandLocation();
 		Tile tile = Island.INSTANCE.getTile(eIslandLocation);
 
-		if (tile.isUnflooded())
-			tile.floodTile();
+		if (tile.getImageView().isFlippedFront())
+			floodTile(tile);
+		else
+			sinkTile(tile);
+
+		proceedToNextGameState();
+
+	}
+
+	private void floodTile(Tile tile) {
+
+		new TileActionShrink(tile);
+		tile.getImageView().flip();
+		new TileActionEmbiggen(tile);
+
+	}
+
+	private void sinkTile(Tile tile) {
 
 	}
 

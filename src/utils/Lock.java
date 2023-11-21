@@ -16,15 +16,16 @@ public enum Lock {
 
 	public void lock() {
 
-		if (!Animation.INSTANCE.isAnimatingSynchronous()) {
+		if (this.lock) {
 
-			Logger.INSTANCE.logNewLine("locked without synch");
+			Logger.INSTANCE.logNewLine("already locked");
 			return;
 
 		}
 
 		this.lock = true;
 		Logger.INSTANCE.log("lock");
+		CursorFX.INSTANCE.setWait();
 		Platform.enterNestedEventLoop(this.lockObject);
 
 	}
@@ -33,7 +34,7 @@ public enum Lock {
 
 		if (!this.lock) {
 
-			Logger.INSTANCE.logNewLine("unlocked without synch");
+			Logger.INSTANCE.logNewLine("unlocked fail");
 			return;
 
 		}
@@ -41,6 +42,7 @@ public enum Lock {
 		Logger.INSTANCE.logNewLine("unlock");
 
 		this.lock = false;
+		CursorFX.INSTANCE.setDefault();
 		Platform.exitNestedEventLoop(this.lockObject, null);
 
 		if (this.runnable == null)

@@ -38,7 +38,6 @@ public enum Animation implements IUpdateAble {
 		if (!this.animationsSynchronous.isEmpty())
 			return;
 
-		CursorFX.INSTANCE.setDefault();
 		Lock.INSTANCE.unlock();
 
 	}
@@ -85,10 +84,6 @@ public enum Animation implements IUpdateAble {
 		switch (animationSynchEnum) {
 
 		case SYNCHRONOUS:
-
-			if (!isAnimatingSynchronous())
-				CursorFX.INSTANCE.setWait();
-
 			listToAdd = this.animationsSynchronous;
 			break;
 
