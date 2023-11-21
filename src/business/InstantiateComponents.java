@@ -1,5 +1,6 @@
 package business;
 
+import cards.CardFlood;
 import enums.EAdventurer;
 import enums.EIslandLocation;
 import enums.ETreasure;
@@ -14,6 +15,16 @@ public enum InstantiateComponents {
 	private InstantiateComponents() {
 
 		instantiateTiles();
+		instantiateDeckFlood();
+
+		ListsManager.INSTANCE.saveListsOriginal();
+
+	}
+
+	private void instantiateDeckFlood() {
+
+		for (EIslandLocation eIslandLocation : EIslandLocation.values())
+			ListsManager.INSTANCE.deckFlood.getArrayList().addLast(new CardFlood(eIslandLocation));
 
 	}
 

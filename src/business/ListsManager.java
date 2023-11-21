@@ -1,5 +1,8 @@
 package business;
 
+import cards.CardFlood;
+import listCredentials.DeckFlood;
+import listCredentials.DiscardPileFlood;
 import tiles.Tile;
 import utils.ArrayList;
 import utils.Interfaces.IImageViewAble;
@@ -11,10 +14,13 @@ public enum ListsManager {
 
 	public final ArrayList<ListImageViewAbles<IImageViewAble>> lists = new ArrayList<ListImageViewAbles<IImageViewAble>>();
 	public ArrayList<Tile> tiles;
+	public ListImageViewAbles<CardFlood> deckFlood, discardPileFlood;
 
 	public void instantiate() {
 
 		this.tiles = new ArrayList<>();
+		this.deckFlood = new ListImageViewAbles<>(DeckFlood.class);
+		this.discardPileFlood = new ListImageViewAbles<>(DiscardPileFlood.class);
 
 	}
 

@@ -33,8 +33,8 @@ public abstract class Tile implements IImageViewAble {
 	public final void print() {
 
 		Logger.INSTANCE.log("/*");
-		Logger.INSTANCE.log(this.eIslandLocation);
 		Logger.INSTANCE.log(this.getClass().getSimpleName());
+		Logger.INSTANCE.log(this.eIslandLocation);
 		printCredentials();
 		Logger.INSTANCE.logNewLine("*/");
 

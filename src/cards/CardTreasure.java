@@ -1,17 +1,17 @@
 package cards;
 
-import enums.EIslandLocation;
+import enums.ETreasure;
 import utils.ImageView;
 import utils.Interfaces.IImageViewAble;
 import utils.Logger;
 
-public class CardFlood implements IImageViewAble {
+public class CardTreasure implements IImageViewAble {
 
-	private EIslandLocation eIslandLocation = null;
+	private ETreasure eTreasure = null;
 
-	public CardFlood(EIslandLocation eIslandLocation) {
+	public CardTreasure(ETreasure eTreasure) {
 
-		this.eIslandLocation = eIslandLocation;
+		this.eTreasure = eTreasure;
 		createImageView();
 
 	}
@@ -20,7 +20,7 @@ public class CardFlood implements IImageViewAble {
 
 		Logger.INSTANCE.log("/*");
 		Logger.INSTANCE.log(this.getClass().getSimpleName());
-		Logger.INSTANCE.log(this.eIslandLocation.toString());
+		Logger.INSTANCE.log(this.eTreasure.toString());
 		Logger.INSTANCE.logNewLine("*/");
 
 	}
@@ -30,19 +30,18 @@ public class CardFlood implements IImageViewAble {
 		print();
 	}
 
-	public EIslandLocation getEIslandLocation() {
-		return this.eIslandLocation;
+	public ETreasure getETreasure() {
+		return this.eTreasure;
 	}
 
 	private void createImageView() {
 
-		String filePath = "cards/flood/";
-		filePath += this.eIslandLocation.toString();
+		String filePath = "cards/treasure/";
+		filePath += this.eTreasure.toString();
 		filePath += ".jpg";
 
 		new ImageView(filePath, this);
 		getImageView().setBack("cards/flood/back.jpg");
-		getImageView().flipBack();
 
 	}
 
