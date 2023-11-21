@@ -16,11 +16,14 @@ public class JUnit extends GameState {
 		getListsManager().deckFlood.relocateImageViews();
 		getListsManager().deckTreasure.relocateImageViews();
 
-		transferFloodCardsFromDeckToDiscardPile(3);
+		transferFloodCardsFromDeckToDiscardPile(9);
 		transferTreasureCardsFromDeckToDiscardPile(3);
 
-		getFlow().addFirst(DrawFloodCard.class, 7);
+		getListsManager().tiles.loadOriginal();
 
+		//
+
+		getFlow().addFirst(DrawFloodCard.class, 6);
 		proceedToNextGameState();
 
 	}

@@ -1,5 +1,7 @@
 package gameStates;
 
+import boardPosition.BoardPositionLand;
+import business.Credentials;
 import cards.CardFlood;
 import enums.EIslandLocation;
 import gameStatesDefault.GameState;
@@ -15,8 +17,26 @@ public class DrawFloodCard extends GameState {
 	@Override
 	public void execute() {
 
+		if (getListsManager().deckFlood.getArrayList().isEmpty())
+			shuffleFloodDiscardPileToDeck();
+
 		drawFloodCard();
-		handleTile();
+		handleTileAction();
+
+	}
+
+	private void shuffleFloodDiscardPileToDeck() {
+
+		getListsManager().deckFlood.getArrayList()
+				.addAllLast(getListsManager().discardPileFlood.getArrayList().clear());
+
+		getListsManager().deckFlood.animateSynchronousLock();
+
+		for (CardFlood cardFlood : getListsManager().deckFlood)
+			cardFlood.getImageView().flip();
+
+		getListsManager().deckFlood.getArrayList().shuffle();
+		getListsManager().deckFlood.relocateImageViews();
 
 	}
 
@@ -30,15 +50,17 @@ public class DrawFloodCard extends GameState {
 
 	}
 
-	private void handleTile() {
+	private void handleTileAction() {
 
 		EIslandLocation eIslandLocation = this.cardFlood.getEIslandLocation();
-		Tile tile = Island.INSTANCE.getTile(eIslandLocation);
+		BoardPositionLand boardPositionLand = Island.INSTANCE
+				.getBoardPositionLandContainingTile(eIslandLocation);
+		Tile tile = boardPositionLand.getTile();
 
 		if (tile.getImageView().isFlippedFront())
 			floodTile(tile);
 		else
-			sinkTile(tile);
+			sinkTile(tile, boardPositionLand);
 
 		proceedToNextGameState();
 
@@ -52,7 +74,16 @@ public class DrawFloodCard extends GameState {
 
 	}
 
-	private void sinkTile(Tile tile) {
+	private void sinkTile(Tile tile, BoardPositionLand boardPositionLand) {
+
+		boardPositionLand.removeTile();
+		new TileActionShrink(tile);
+
+		tile.getImageView().setVisible(false);
+		tile.getImageView().setDimensions(Credentials.INSTANCE.dTile);
+
+		getListsManager().discardPileFlood.getArrayList().removeFirst().getImageView()
+				.setVisible(false);
 
 	}
 

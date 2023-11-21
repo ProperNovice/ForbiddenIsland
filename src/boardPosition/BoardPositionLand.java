@@ -24,11 +24,8 @@ public class BoardPositionLand extends BoardPosition implements ISelectCoordinat
 		return this.tile;
 	}
 
-	public void removeTileSetVisibleFalse() {
-
-		this.tile.getImageView().setVisible(false);
+	public void removeTile() {
 		this.tile = null;
-
 	}
 
 	public boolean containsTile() {

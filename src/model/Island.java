@@ -21,7 +21,7 @@ public enum Island {
 		createBoardPositions();
 	}
 
-	public Tile getTile(EIslandLocation eIslandLocation) {
+	public BoardPositionLand getBoardPositionLandContainingTile(EIslandLocation eIslandLocation) {
 
 		for (int row = 0; row < 6; row++) {
 
@@ -42,7 +42,7 @@ public enum Island {
 				if (!tile.getEIslandLocation().equals(eIslandLocation))
 					continue;
 
-				return tile;
+				return boardPositionLand;
 
 			}
 
