@@ -1,6 +1,7 @@
 package business;
 
 import cards.CardFlood;
+import cards.CardTreasure;
 import enums.EAdventurer;
 import enums.EIslandLocation;
 import enums.ETreasure;
@@ -16,8 +17,28 @@ public enum InstantiateComponents {
 
 		instantiateTiles();
 		instantiateDeckFlood();
+		instantiateDeckTreasure();
 
 		ListsManager.INSTANCE.saveListsOriginal();
+
+	}
+
+	private void instantiateDeckTreasure() {
+
+		addCardsToDeckTreasure(ETreasure.TheCrystalOfFire, 5);
+		addCardsToDeckTreasure(ETreasure.TheEarthStone, 5);
+		addCardsToDeckTreasure(ETreasure.TheOceansChalice, 5);
+		addCardsToDeckTreasure(ETreasure.TheStatueOfTheWind, 5);
+		addCardsToDeckTreasure(ETreasure.WatersRise, 3);
+		addCardsToDeckTreasure(ETreasure.HelicopterLift, 3);
+		addCardsToDeckTreasure(ETreasure.Sandbags, 2);
+
+	}
+
+	private void addCardsToDeckTreasure(ETreasure eTreasure, int amount) {
+
+		for (int counter = 1; counter <= amount; counter++)
+			ListsManager.INSTANCE.deckTreasure.getArrayList().addLast(new CardTreasure(eTreasure));
 
 	}
 

@@ -1,8 +1,11 @@
 package business;
 
 import cards.CardFlood;
+import cards.CardTreasure;
 import listCredentials.DeckFlood;
+import listCredentials.DeckTreasure;
 import listCredentials.DiscardPileFlood;
+import listCredentials.DiscardPileTreasure;
 import tiles.Tile;
 import utils.ArrayList;
 import utils.Interfaces.IImageViewAble;
@@ -15,12 +18,15 @@ public enum ListsManager {
 	public final ArrayList<ListImageViewAbles<IImageViewAble>> lists = new ArrayList<ListImageViewAbles<IImageViewAble>>();
 	public ArrayList<Tile> tiles;
 	public ListImageViewAbles<CardFlood> deckFlood, discardPileFlood;
+	public ListImageViewAbles<CardTreasure> deckTreasure, discardPileTreasure;
 
 	public void instantiate() {
 
 		this.tiles = new ArrayList<>();
 		this.deckFlood = new ListImageViewAbles<>(DeckFlood.class);
 		this.discardPileFlood = new ListImageViewAbles<>(DiscardPileFlood.class);
+		this.deckTreasure = new ListImageViewAbles<>(DeckTreasure.class);
+		this.discardPileTreasure = new ListImageViewAbles<>(DiscardPileTreasure.class);
 
 	}
 

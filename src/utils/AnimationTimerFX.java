@@ -59,7 +59,7 @@ public enum AnimationTimerFX {
 
 		// update each frame
 
-		for (IUpdateAble updateAble : this.updateEachFrame)
+		for (IUpdateAble updateAble : this.updateEachFrame.clone())
 			updateAble.update();
 
 		// update interval

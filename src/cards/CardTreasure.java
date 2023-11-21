@@ -41,7 +41,8 @@ public class CardTreasure implements IImageViewAble {
 		filePath += ".jpg";
 
 		new ImageView(filePath, this);
-		getImageView().setBack("cards/flood/back.jpg");
+		getImageView().setBack("cards/treasure/back.jpg");
+		getImageView().flipBack();
 
 	}
 
