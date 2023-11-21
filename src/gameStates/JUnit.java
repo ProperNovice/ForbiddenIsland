@@ -4,6 +4,7 @@ import cards.CardFlood;
 import cards.CardTreasure;
 import gameStatesDefault.GameState;
 import model.Island;
+import utils.Flow;
 
 public class JUnit extends GameState {
 
@@ -11,10 +12,16 @@ public class JUnit extends GameState {
 	public void execute() {
 
 		Island.INSTANCE.setUpBoard();
+
+		getListsManager().deckFlood.getArrayList().shuffle();
 		getListsManager().deckFlood.relocateImageViews();
 		getListsManager().deckTreasure.relocateImageViews();
-		
+
+		transferFloodCardsFromDeckToDiscardPile(3);
 		transferTreasureCardsFromDeckToDiscardPile(3);
+
+		for (int counter = 1; counter <= 4; counter++)
+			Flow.INSTANCE.executeGameState(DrawFloodCard.class);
 
 	}
 

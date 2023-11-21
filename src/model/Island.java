@@ -5,8 +5,10 @@ import boardPosition.BoardPositionLand;
 import boardPosition.BoardPositionWater;
 import business.Credentials;
 import business.ListsManager;
+import enums.EIslandLocation;
 import tiles.Tile;
 import utils.HashMap;
+import utils.ShutDown;
 import utils.Vector2;
 
 public enum Island {
@@ -17,6 +19,38 @@ public enum Island {
 
 	private Island() {
 		createBoardPositions();
+	}
+
+	public Tile getTile(EIslandLocation eIslandLocation) {
+
+		for (int row = 0; row < 6; row++) {
+
+			for (int column = 0; column < 6; column++) {
+
+				BoardPosition boardPosition = this.hashMap.getValue(row).getValue(column);
+
+				if (boardPosition instanceof BoardPositionWater)
+					continue;
+
+				BoardPositionLand boardPositionLand = (BoardPositionLand) boardPosition;
+
+				if (!boardPositionLand.containsTile())
+					continue;
+
+				Tile tile = boardPositionLand.getTile();
+
+				if (!tile.getEIslandLocation().equals(eIslandLocation))
+					continue;
+
+				return tile;
+
+			}
+
+		}
+
+		ShutDown.INSTANCE.execute();
+		return null;
+
 	}
 
 	public void setUpBoard() {

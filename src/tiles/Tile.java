@@ -1,15 +1,19 @@
 package tiles;
 
 import enums.EIslandLocation;
+import utils.AnimationTimerFX;
 import utils.Image;
 import utils.ImageView;
 import utils.Interfaces.IImageViewAble;
+import utils.Interfaces.IUpdateAble;
 import utils.Logger;
+import utils.Vector2;
 
-public abstract class Tile implements IImageViewAble {
+public abstract class Tile implements IImageViewAble, IUpdateAble {
 
 	private EIslandLocation eIslandLocation = null;
 	private Image unflooded, flooded;
+	private Vector2 coordinatesCenter = null;
 
 	public Tile(EIslandLocation eIslandLocation) {
 
@@ -19,7 +23,12 @@ public abstract class Tile implements IImageViewAble {
 	}
 
 	public final void floodTile() {
-		getImageView().setImage(this.flooded);
+
+		this.coordinatesCenter = getImageView().getCoordinatesCenter().clone();
+		AnimationTimerFX.INSTANCE.updateEachFrame(this);
+
+//		getImageView().setImage(this.flooded);
+
 	}
 
 	public final void unfloodTile() {
@@ -47,6 +56,15 @@ public abstract class Tile implements IImageViewAble {
 	@Override
 	public void handleMousePressedPrimary() {
 		print();
+	}
+
+	public EIslandLocation getEIslandLocation() {
+		return this.eIslandLocation;
+	}
+
+	@Override
+	public void update() {
+
 	}
 
 	private void create() {
