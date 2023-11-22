@@ -1,7 +1,5 @@
 package model;
 
-import adventurers.Adventurer;
-import boardPosition.BoardPositionLand;
 import players.Player;
 import players.PlayerBottom;
 import players.PlayerTop;
@@ -12,37 +10,16 @@ public enum PlayersModel {
 	INSTANCE;
 
 	private ArrayList<Player> players = new ArrayList<>();
-	private PlayerTop playerTop = new PlayerTop();
-	private PlayerBottom playerBottom = new PlayerBottom();
 
 	private PlayersModel() {
 
+		this.players.addLast(new PlayerTop());
+		this.players.addLast(new PlayerBottom());
+
 	}
 
-	public void setUpPlayers() {
-
-		ArrayList<Adventurer> list = AdventurersModel.INSTANCE.getTwoRandomAdventurers();
-
-		this.playerTop.setAdventurerRelocateCard(list.removeRandom());
-		this.playerBottom.setAdventurerRelocateCard(list.removeRandom());
-
-		this.players.addLast(this.playerTop);
-		this.players.addLast(this.playerBottom);
-
-		this.playerTop.getAdventurer().getAdventurerPawn().getImageView().setVisible(true);
-		this.playerBottom.getAdventurer().getAdventurerPawn().getImageView().setVisible(true);
-
-		BoardPositionLand boardPositionLand = BoardModel.INSTANCE
-				.getBoardPositionLandWithAdventurerStartingPosition(
-						this.playerTop.getAdventurer().getEAdventurer());
-
-		boardPositionLand.addAdventurerPawnRelocate(this.playerTop);
-
-		boardPositionLand = BoardModel.INSTANCE.getBoardPositionLandWithAdventurerStartingPosition(
-				this.playerBottom.getAdventurer().getEAdventurer());
-
-		boardPositionLand.addAdventurerPawnRelocate(this.playerBottom);
-
+	public ArrayList<Player> getPlayers() {
+		return this.players;
 	}
 
 }

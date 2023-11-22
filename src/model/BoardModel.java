@@ -4,13 +4,7 @@ import boardPosition.BoardPosition;
 import boardPosition.BoardPositionLand;
 import boardPosition.BoardPositionWater;
 import business.Credentials;
-import business.ListsManager;
-import enums.EAdventurer;
-import enums.EIslandLocation;
-import tiles.Tile;
-import tiles.TileAdventurer;
 import utils.HashMap;
-import utils.ShutDown;
 import utils.Vector2;
 
 public enum BoardModel {
@@ -23,97 +17,8 @@ public enum BoardModel {
 		createBoardPositions();
 	}
 
-	public HashMap<Integer, HashMap<Integer, BoardPosition>> getIsland() {
+	public HashMap<Integer, HashMap<Integer, BoardPosition>> getBoard() {
 		return this.hashMap;
-	}
-
-	public BoardPositionLand getBoardPositionLandWithAdventurerStartingPosition(
-			EAdventurer eAdventurer) {
-
-		for (int row = 0; row < 6; row++) {
-
-			for (int column = 0; column < 6; column++) {
-
-				BoardPosition boardPosition = this.hashMap.getValue(row).getValue(column);
-
-				if (boardPosition instanceof BoardPositionWater)
-					continue;
-
-				BoardPositionLand boardPositionLand = (BoardPositionLand) boardPosition;
-				Tile tile = boardPositionLand.getTile();
-
-				if (!(tile instanceof TileAdventurer))
-					continue;
-
-				TileAdventurer tileAdventurer = (TileAdventurer) tile;
-
-				if (!tileAdventurer.getEAdventurer().equals(eAdventurer))
-					continue;
-
-				return boardPositionLand;
-
-			}
-
-		}
-
-		ShutDown.INSTANCE.execute();
-		return null;
-
-	}
-
-	public BoardPositionLand getBoardPositionLandContainingTile(EIslandLocation eIslandLocation) {
-
-		for (int row = 0; row < 6; row++) {
-
-			for (int column = 0; column < 6; column++) {
-
-				BoardPosition boardPosition = this.hashMap.getValue(row).getValue(column);
-
-				if (boardPosition instanceof BoardPositionWater)
-					continue;
-
-				BoardPositionLand boardPositionLand = (BoardPositionLand) boardPosition;
-
-				if (!boardPositionLand.containsTile())
-					continue;
-
-				Tile tile = boardPositionLand.getTile();
-
-				if (!tile.getEIslandLocation().equals(eIslandLocation))
-					continue;
-
-				return boardPositionLand;
-
-			}
-
-		}
-
-		ShutDown.INSTANCE.execute();
-		return null;
-
-	}
-
-	public void setUpBoard() {
-
-		ListsManager.INSTANCE.tiles.loadOriginal();
-
-		for (int row = 0; row < 6; row++) {
-
-			for (int column = 0; column < 6; column++) {
-
-				BoardPosition boardPosition = this.hashMap.getValue(row).getValue(column);
-
-				if (boardPosition instanceof BoardPositionWater)
-					continue;
-
-				BoardPositionLand boardPositionLand = (BoardPositionLand) boardPosition;
-				Tile tile = ListsManager.INSTANCE.tiles.removeRandom();
-				boardPositionLand.addTileRelocate(tile);
-
-			}
-
-		}
-
 	}
 
 	private void createBoardPositions() {

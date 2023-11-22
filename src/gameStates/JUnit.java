@@ -1,24 +1,23 @@
 package gameStates;
 
 import adventurers.AdventurerPawn;
+import business.Model;
 import cards.CardFlood;
 import cards.CardTreasure;
 import enums.EAdventurer;
 import gameStatesDefault.GameState;
-import model.BoardModel;
-import model.PlayersModel;
 
 public class JUnit extends GameState {
 
 	@Override
 	public void execute() {
 
-		BoardModel.INSTANCE.setUpBoard();
-		setUpPlayers();
-
 		getListsManager().deckFlood.getArrayList().shuffle();
 		getListsManager().deckFlood.relocateImageViews();
 		getListsManager().deckTreasure.relocateImageViews();
+
+		Model.INSTANCE.setUpBoard();
+		setUpPlayers();
 
 		transferFloodCardsFromDeckToDiscardPile(9);
 		transferTreasureCardsFromDeckToDiscardPile(3);
@@ -66,7 +65,7 @@ public class JUnit extends GameState {
 
 	public void setUpPlayers() {
 
-		PlayersModel.INSTANCE.setUpPlayers();
+		Model.INSTANCE.setUpPlayers();
 
 	}
 

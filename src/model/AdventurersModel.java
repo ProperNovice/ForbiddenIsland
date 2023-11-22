@@ -2,7 +2,6 @@ package model;
 
 import adventurers.Adventurer;
 import enums.EAdventurer;
-import utils.ArrayList;
 import utils.HashMap;
 
 public enum AdventurersModel {
@@ -18,16 +17,8 @@ public enum AdventurersModel {
 
 	}
 
-	public ArrayList<Adventurer> getTwoRandomAdventurers() {
-
-		ArrayList<EAdventurer> eAdventurers = new ArrayList<>(EAdventurer.values());
-		ArrayList<Adventurer> adventurers = new ArrayList<>();
-
-		adventurers.addLast(this.hashMap.getValue(eAdventurers.removeRandom()));
-		adventurers.addLast(this.hashMap.getValue(eAdventurers.removeRandom()));
-
-		return adventurers;
-
+	public HashMap<EAdventurer, Adventurer> getAdventurers() {
+		return this.hashMap;
 	}
 
 }

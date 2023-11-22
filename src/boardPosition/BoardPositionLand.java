@@ -42,10 +42,11 @@ public class BoardPositionLand extends BoardPosition implements ISelectCoordinat
 		return this.tile != null;
 	}
 
-	public void addAdventurerPawnRelocate(Player player) {
+	public void addAdventurerPawnAnimateSynchronous(Player player) {
 
 		this.listPawns.getArrayList().addLast(player.getAdventurer().getAdventurerPawn());
-		this.listPawns.relocateImageViews();
+		this.listPawns.animateSynchronous();
+//		this.listPawns.relocateImageViews();
 
 	}
 
