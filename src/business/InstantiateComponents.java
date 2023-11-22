@@ -1,5 +1,6 @@
 package business;
 
+import adventurers.Adventurer;
 import cards.CardFlood;
 import cards.CardTreasure;
 import enums.EAdventurer;
@@ -18,8 +19,18 @@ public enum InstantiateComponents {
 		instantiateTiles();
 		instantiateDeckFlood();
 		instantiateDeckTreasure();
+		instantiateAdventurers();
 
 		ListsManager.INSTANCE.saveListsOriginal();
+
+	}
+
+	private void instantiateAdventurers() {
+
+		for (EAdventurer eAdventurer : EAdventurer.values())
+			ListsManager.INSTANCE.adventurers.addLast(new Adventurer(eAdventurer));
+
+		ListsManager.INSTANCE.adventurers.saveOriginal();
 
 	}
 

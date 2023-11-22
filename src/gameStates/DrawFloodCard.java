@@ -5,7 +5,7 @@ import business.Credentials;
 import cards.CardFlood;
 import enums.EIslandLocation;
 import gameStatesDefault.GameState;
-import model.Island;
+import model.IslandModel;
 import tileAction.TileActionEmbiggen;
 import tileAction.TileActionShrink;
 import tiles.Tile;
@@ -53,7 +53,7 @@ public class DrawFloodCard extends GameState {
 	private void handleTileAction() {
 
 		EIslandLocation eIslandLocation = this.cardFlood.getEIslandLocation();
-		BoardPositionLand boardPositionLand = Island.INSTANCE
+		BoardPositionLand boardPositionLand = IslandModel.INSTANCE
 				.getBoardPositionLandContainingTile(eIslandLocation);
 		Tile tile = boardPositionLand.getTile();
 

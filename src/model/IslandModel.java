@@ -11,13 +11,13 @@ import utils.HashMap;
 import utils.ShutDown;
 import utils.Vector2;
 
-public enum Island {
+public enum IslandModel {
 
 	INSTANCE;
 
 	private HashMap<Integer, HashMap<Integer, BoardPosition>> hashMap = new HashMap<>();
 
-	private Island() {
+	private IslandModel() {
 		createBoardPositions();
 	}
 

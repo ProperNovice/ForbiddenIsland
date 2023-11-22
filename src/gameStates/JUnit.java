@@ -1,16 +1,18 @@
 package gameStates;
 
+import adventurers.AdventurerPawn;
 import cards.CardFlood;
 import cards.CardTreasure;
+import enums.EAdventurer;
 import gameStatesDefault.GameState;
-import model.Island;
+import model.IslandModel;
 
 public class JUnit extends GameState {
 
 	@Override
 	public void execute() {
 
-		Island.INSTANCE.setUpBoard();
+		IslandModel.INSTANCE.setUpBoard();
 
 		getListsManager().deckFlood.getArrayList().shuffle();
 		getListsManager().deckFlood.relocateImageViews();
@@ -20,6 +22,8 @@ public class JUnit extends GameState {
 		transferTreasureCardsFromDeckToDiscardPile(3);
 
 		getListsManager().tiles.loadOriginal();
+
+		new AdventurerPawn(EAdventurer.Navigator);
 
 		//
 

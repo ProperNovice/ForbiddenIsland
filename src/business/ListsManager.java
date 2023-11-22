@@ -1,5 +1,6 @@
 package business;
 
+import adventurers.Adventurer;
 import cards.CardFlood;
 import cards.CardTreasure;
 import listCredentials.DeckFlood;
@@ -19,10 +20,13 @@ public enum ListsManager {
 	public ArrayList<Tile> tiles;
 	public ListImageViewAbles<CardFlood> deckFlood, discardPileFlood;
 	public ListImageViewAbles<CardTreasure> deckTreasure, discardPileTreasure;
+	public ArrayList<Adventurer> adventurers;
 
 	public void instantiate() {
 
 		this.tiles = new ArrayList<>();
+		this.adventurers = new ArrayList<>();
+
 		this.deckFlood = new ListImageViewAbles<>(DeckFlood.class);
 		this.discardPileFlood = new ListImageViewAbles<>(DiscardPileFlood.class);
 		this.deckTreasure = new ListImageViewAbles<>(DeckTreasure.class);

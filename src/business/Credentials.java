@@ -15,10 +15,11 @@ public enum Credentials {
 	public Vector2 cTextPanel, cImageViewClone;
 	public RearrangeTypeEnum rearrangeTypeEnumText = RearrangeTypeEnum.LINEAR;
 
-	public Vector2 dTile, dCard;
+	public double tileActionPercentage = 2;
+	public Vector2 dTile, dCard, dAdventurerPawn;
 	public Vector2 cBoardPosition, cDeckFlood, cDiscardPileFlood, cDeckTreasure,
-			cDiscardPileTreasure;
-	public double tileActionPercentage = 1;
+			cDiscardPileTreasure, playerIAdventurerCard, playerIIAdventurerCard, playerICardTreasureList,
+			playerIICardTreasureList;
 
 	private Credentials() {
 
@@ -60,6 +61,12 @@ public enum Credentials {
 		x = 182;
 		y = 260;
 		this.dCard = new Vector2(x, y);
+
+		// d adventurer pawn
+
+		y = this.dTile.y / 2;
+		x = 466 * y / 768;
+		this.dAdventurerPawn = new Vector2(x, y);
 
 		// d frame
 
@@ -104,6 +111,38 @@ public enum Credentials {
 		x += this.dCard.x;
 		x += this.dGapBetweenComponents.x;
 		this.cDiscardPileTreasure = new Vector2(x, y);
+
+		// player I adventurer card
+
+		x = this.cDeckFlood.x;
+		y = this.cDeckFlood.y;
+		y += this.dCard.y;
+		y += this.dGapBetweenComponents.y;
+		this.playerIAdventurerCard = new Vector2(x, y);
+
+		// player I list
+
+		x = this.playerIAdventurerCard.x;
+		x += this.dCard.x;
+		x += this.dGapBetweenComponents.x;
+		y = this.playerIAdventurerCard.y;
+		this.playerICardTreasureList = new Vector2(x, y);
+
+		// player II adventurer card
+
+		x = this.cDeckFlood.x;
+		y = this.playerIAdventurerCard.y;
+		y += this.dCard.y;
+		y += this.dGapBetweenComponents.y;
+		this.playerIIAdventurerCard = new Vector2(x, y);
+
+		// player II list
+
+		x = this.playerIIAdventurerCard.x;
+		x += this.dCard.x;
+		x += this.dGapBetweenComponents.x;
+		y = this.playerIIAdventurerCard.y;
+		this.playerIICardTreasureList = new Vector2(x, y);
 
 	}
 
