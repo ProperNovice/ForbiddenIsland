@@ -5,7 +5,7 @@ import cards.CardFlood;
 import cards.CardTreasure;
 import enums.EAdventurer;
 import gameStatesDefault.GameState;
-import model.IslandModel;
+import model.BoardModel;
 import model.PlayersModel;
 
 public class JUnit extends GameState {
@@ -13,7 +13,7 @@ public class JUnit extends GameState {
 	@Override
 	public void execute() {
 
-		IslandModel.INSTANCE.setUpBoard();
+		BoardModel.INSTANCE.setUpBoard();
 		setUpPlayers();
 
 		getListsManager().deckFlood.getArrayList().shuffle();

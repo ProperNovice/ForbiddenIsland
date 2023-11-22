@@ -13,17 +13,22 @@ import utils.HashMap;
 import utils.ShutDown;
 import utils.Vector2;
 
-public enum IslandModel {
+public enum BoardModel {
 
 	INSTANCE;
 
 	private HashMap<Integer, HashMap<Integer, BoardPosition>> hashMap = new HashMap<>();
 
-	private IslandModel() {
+	private BoardModel() {
 		createBoardPositions();
 	}
 
-	public BoardPositionLand getBoardPositionLandWithAdventurerStartingPosition(EAdventurer eAdventurer) {
+	public HashMap<Integer, HashMap<Integer, BoardPosition>> getIsland() {
+		return this.hashMap;
+	}
+
+	public BoardPositionLand getBoardPositionLandWithAdventurerStartingPosition(
+			EAdventurer eAdventurer) {
 
 		for (int row = 0; row < 6; row++) {
 

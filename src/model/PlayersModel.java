@@ -32,13 +32,13 @@ public enum PlayersModel {
 		this.playerTop.getAdventurer().getAdventurerPawn().getImageView().setVisible(true);
 		this.playerBottom.getAdventurer().getAdventurerPawn().getImageView().setVisible(true);
 
-		BoardPositionLand boardPositionLand = IslandModel.INSTANCE
+		BoardPositionLand boardPositionLand = BoardModel.INSTANCE
 				.getBoardPositionLandWithAdventurerStartingPosition(
 						this.playerTop.getAdventurer().getEAdventurer());
 
 		boardPositionLand.addAdventurerPawnRelocate(this.playerTop);
 
-		boardPositionLand = IslandModel.INSTANCE.getBoardPositionLandWithAdventurerStartingPosition(
+		boardPositionLand = BoardModel.INSTANCE.getBoardPositionLandWithAdventurerStartingPosition(
 				this.playerBottom.getAdventurer().getEAdventurer());
 
 		boardPositionLand.addAdventurerPawnRelocate(this.playerBottom);
