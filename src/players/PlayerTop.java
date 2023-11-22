@@ -2,19 +2,19 @@ package players;
 
 import business.Credentials;
 import listCredentials.ListCredentials;
-import listCredentials.PlayerICardTreasure;
+import listCredentials.PlayerTopCardTreasure;
 import utils.Vector2;
 
-public class PlayerI extends Player {
+public class PlayerTop extends Player {
 
 	@Override
 	protected Vector2 getCardAdventurerCoordinates() {
-		return Credentials.INSTANCE.playerIAdventurerCard;
+		return Credentials.INSTANCE.playerTopAdventurerCard;
 	}
 
 	@Override
 	protected Class<? extends ListCredentials> getCardTreasureCoordinates() {
-		return PlayerICardTreasure.class;
+		return PlayerTopCardTreasure.class;
 	}
 
 }

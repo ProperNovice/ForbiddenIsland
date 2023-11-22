@@ -1,9 +1,6 @@
-/tileAction/
-/adventurers/
-/gameStates/
-/images/
-/business/
-/model/
-/enums/
 /players/
+/enums/
+/business/
 /listCredentials/
+/gameStates/
+/model/

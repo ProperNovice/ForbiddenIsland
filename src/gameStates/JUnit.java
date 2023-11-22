@@ -6,6 +6,7 @@ import cards.CardTreasure;
 import enums.EAdventurer;
 import gameStatesDefault.GameState;
 import model.IslandModel;
+import model.PlayersModel;
 
 public class JUnit extends GameState {
 
@@ -13,6 +14,7 @@ public class JUnit extends GameState {
 	public void execute() {
 
 		IslandModel.INSTANCE.setUpBoard();
+		setUpPlayers();
 
 		getListsManager().deckFlood.getArrayList().shuffle();
 		getListsManager().deckFlood.relocateImageViews();
@@ -59,6 +61,12 @@ public class JUnit extends GameState {
 		}
 
 		getListsManager().discardPileTreasure.relocateImageViews();
+
+	}
+
+	public void setUpPlayers() {
+
+		PlayersModel.INSTANCE.createPlayers();
 
 	}
 

@@ -12,8 +12,14 @@ public abstract class Player {
 
 	}
 
-	public final void setAdventurer(Adventurer adventurer) {
+	public final void setAdventurerRelocateCard(Adventurer adventurer) {
+
 		this.adventurer = adventurer;
+		this.adventurer.getAdventurerCard().getImageView()
+				.relocateTopLeft(getCardAdventurerCoordinates());
+
+		this.adventurer.getAdventurerCard().getImageView().setVisible(true);
+
 	}
 
 	protected abstract Vector2 getCardAdventurerCoordinates();

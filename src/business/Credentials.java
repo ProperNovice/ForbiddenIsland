@@ -18,8 +18,8 @@ public enum Credentials {
 	public double tileActionPercentage = 2;
 	public Vector2 dTile, dCard, dAdventurerPawn;
 	public Vector2 cBoardPosition, cDeckFlood, cDiscardPileFlood, cDeckTreasure,
-			cDiscardPileTreasure, playerIAdventurerCard, playerIIAdventurerCard, playerICardTreasureList,
-			playerIICardTreasureList;
+			cDiscardPileTreasure, playerTopAdventurerCard, playerBottomAdventurerCard,
+			playerTopCardTreasureList, playerBottomCardTreasureList;
 
 	private Credentials() {
 
@@ -112,37 +112,37 @@ public enum Credentials {
 		x += this.dGapBetweenComponents.x;
 		this.cDiscardPileTreasure = new Vector2(x, y);
 
-		// player I adventurer card
+		// player top adventurer card
 
 		x = this.cDeckFlood.x;
 		y = this.cDeckFlood.y;
 		y += this.dCard.y;
 		y += this.dGapBetweenComponents.y;
-		this.playerIAdventurerCard = new Vector2(x, y);
+		this.playerTopAdventurerCard = new Vector2(x, y);
 
-		// player I list
+		// player top list
 
-		x = this.playerIAdventurerCard.x;
+		x = this.playerTopAdventurerCard.x;
 		x += this.dCard.x;
 		x += this.dGapBetweenComponents.x;
-		y = this.playerIAdventurerCard.y;
-		this.playerICardTreasureList = new Vector2(x, y);
+		y = this.playerTopAdventurerCard.y;
+		this.playerTopCardTreasureList = new Vector2(x, y);
 
-		// player II adventurer card
+		// player bottom adventurer card
 
 		x = this.cDeckFlood.x;
-		y = this.playerIAdventurerCard.y;
-		y += this.dCard.y;
-		y += this.dGapBetweenComponents.y;
-		this.playerIIAdventurerCard = new Vector2(x, y);
+		y = this.playerTopAdventurerCard.y;
+		y += 2 * this.dCard.y;
+		y += 2 * this.dGapBetweenComponents.y;
+		this.playerBottomAdventurerCard = new Vector2(x, y);
 
-		// player II list
+		// player bottom list
 
-		x = this.playerIIAdventurerCard.x;
+		x = this.playerBottomAdventurerCard.x;
 		x += this.dCard.x;
 		x += this.dGapBetweenComponents.x;
-		y = this.playerIIAdventurerCard.y;
-		this.playerIICardTreasureList = new Vector2(x, y);
+		y = this.playerBottomAdventurerCard.y;
+		this.playerBottomCardTreasureList = new Vector2(x, y);
 
 	}
 

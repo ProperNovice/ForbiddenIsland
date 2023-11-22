@@ -24,6 +24,7 @@ public enum AdventurersModel {
 		ArrayList<Adventurer> adventurers = new ArrayList<>();
 
 		adventurers.addLast(this.hashMap.getValue(eAdventurers.removeRandom()));
+		adventurers.addLast(this.hashMap.getValue(eAdventurers.removeRandom()));
 
 		return adventurers;
 
