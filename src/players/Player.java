@@ -22,6 +22,10 @@ public abstract class Player {
 
 	}
 
+	public final Adventurer getAdventurer() {
+		return this.adventurer;
+	}
+
 	protected abstract Vector2 getCardAdventurerCoordinates();
 
 	protected abstract Class<? extends ListCredentials> getCardTreasureCoordinates();

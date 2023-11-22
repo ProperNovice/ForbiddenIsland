@@ -1,6 +1,7 @@
 package model;
 
 import adventurers.Adventurer;
+import boardPosition.BoardPositionLand;
 import players.Player;
 import players.PlayerBottom;
 import players.PlayerTop;
@@ -18,14 +19,29 @@ public enum PlayersModel {
 
 	}
 
-	public void createPlayers() {
+	public void setUpPlayers() {
 
 		ArrayList<Adventurer> list = AdventurersModel.INSTANCE.getTwoRandomAdventurers();
 
-		System.out.println(list.size());
-		
 		this.playerTop.setAdventurerRelocateCard(list.removeRandom());
 		this.playerBottom.setAdventurerRelocateCard(list.removeRandom());
+
+		this.players.addLast(this.playerTop);
+		this.players.addLast(this.playerBottom);
+
+		this.playerTop.getAdventurer().getAdventurerPawn().getImageView().setVisible(true);
+		this.playerBottom.getAdventurer().getAdventurerPawn().getImageView().setVisible(true);
+
+		BoardPositionLand boardPositionLand = IslandModel.INSTANCE
+				.getBoardPositionLandWithAdventurerStartingPosition(
+						this.playerTop.getAdventurer().getEAdventurer());
+
+		boardPositionLand.addAdventurerPawnRelocate(this.playerTop);
+
+		boardPositionLand = IslandModel.INSTANCE.getBoardPositionLandWithAdventurerStartingPosition(
+				this.playerBottom.getAdventurer().getEAdventurer());
+
+		boardPositionLand.addAdventurerPawnRelocate(this.playerBottom);
 
 	}
 

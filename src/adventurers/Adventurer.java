@@ -16,7 +16,7 @@ public class Adventurer {
 
 	}
 
-	public EAdventurer geteEAdventurer() {
+	public EAdventurer getEAdventurer() {
 		return this.eAdventurer;
 	}
 

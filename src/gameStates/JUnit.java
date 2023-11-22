@@ -66,7 +66,7 @@ public class JUnit extends GameState {
 
 	public void setUpPlayers() {
 
-		PlayersModel.INSTANCE.createPlayers();
+		PlayersModel.INSTANCE.setUpPlayers();
 
 	}
 
