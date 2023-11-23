@@ -24,8 +24,8 @@ public class JUnit extends GameState {
 
 		Model.INSTANCE.setUpBoard();
 
-		setUpPlayer(PlayersModel.INSTANCE.getPlayers().getFirst(), EAdventurer.Diver, 3, 3);
-		setUpPlayer(PlayersModel.INSTANCE.getPlayers().getLast(), EAdventurer.Messenger, 3, 3);
+		setUpPlayer(PlayersModel.INSTANCE.getPlayers().getFirst(), EAdventurer.Explorer, 3, 3);
+		setUpPlayer(PlayersModel.INSTANCE.getPlayers().getLast(), EAdventurer.Messenger, 3, 4);
 
 //		Model.INSTANCE.setUpPlayers();
 //		Model.INSTANCE.drawStartingHands();
@@ -34,6 +34,8 @@ public class JUnit extends GameState {
 //		transferTreasureCardsFromDeckToDiscardPile(3);
 
 //		getFlow().addFirst(DrawFloodCard.class, 6);
+		getFlow().addAllFirst(SelectAction1.class, SelectAction2.class, SelectAction3.class);
+
 		proceedToNextGameState();
 
 	}

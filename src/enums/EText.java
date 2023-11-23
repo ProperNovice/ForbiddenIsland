@@ -12,6 +12,12 @@ public enum EText {
 	VOID("", TextTypeEnum.INDICATOR),
 	YOU_LOST("You lost", TextTypeEnum.INDICATOR),
 	YOU_WON("You won", TextTypeEnum.INDICATOR),
+	ACTION("Action ", TextTypeEnum.INDICATOR),
+	MOVE("Move", TextTypeEnum.OPTION),
+	SHORE_UP("Shore up", TextTypeEnum.OPTION),
+	GIVE_TREASURE_CARD("Pass treasure card", TextTypeEnum.OPTION),
+	CAPTURE_TREASURE("Capture treasure", TextTypeEnum.OPTION),
+	END_TURN("End turn", TextTypeEnum.OPTION),
 
 	;
 

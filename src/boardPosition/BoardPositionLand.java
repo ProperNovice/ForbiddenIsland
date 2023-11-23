@@ -14,9 +14,9 @@ public class BoardPositionLand extends BoardPosition implements ISelectCoordinat
 	private Tile tile = null;
 	private ListImageViewAbles<AdventurerPawn> listPawns = null;
 
-	public BoardPositionLand(Vector2 vector2) {
+	public BoardPositionLand(Vector2 cordinatesCenter) {
 
-		this.coordinatesCenter = vector2.clone();
+		this.coordinatesCenter = cordinatesCenter.clone();
 
 		this.listPawns = new ListImageViewAbles<>(BoardPositionList.class);
 		this.listPawns.getListCredentials().coordinatesList = this.coordinatesCenter;
@@ -40,6 +40,10 @@ public class BoardPositionLand extends BoardPosition implements ISelectCoordinat
 
 	public boolean containsTile() {
 		return this.tile != null;
+	}
+
+	public ListImageViewAbles<AdventurerPawn> getListPawns() {
+		return this.listPawns;
 	}
 
 	public void addAdventurerPawnAnimateSynchronous(Player player) {

@@ -1,6 +1,7 @@
 package business;
 
 import adventurers.Adventurer;
+import adventurers.AdventurerPawn;
 import boardPosition.BoardPosition;
 import boardPosition.BoardPositionLand;
 import boardPosition.BoardPositionWater;
@@ -20,10 +21,132 @@ import utils.Flow;
 import utils.ListImageViewAbles;
 import utils.Lock;
 import utils.ShutDown;
+import utils.Vector2;
 
 public enum Model {
 
 	INSTANCE;
+
+	public ArrayList<BoardPositionLand> getBoardPositionsAvailableToMove() {
+
+		BoardPositionLand boardPositionLandCurrentPlayer = getBoardPositionLandContainingCurrentPlayer();
+		Vector2 vector2 = getBoardPositionLandCoordinatesBoard(boardPositionLandCurrentPlayer);
+
+		ArrayList<BoardPositionLand> list = new ArrayList<>();
+
+		list.addLast(getBoardPositionLandContainingTile(vector2.x - 1, vector2.y));
+		list.addLast(getBoardPositionLandContainingTile(vector2.x + 1, vector2.y));
+		list.addLast(getBoardPositionLandContainingTile(vector2.x, vector2.y - 1));
+		list.addLast(getBoardPositionLandContainingTile(vector2.x, vector2.y + 1));
+
+		if (PlayersModel.INSTANCE.getCurrentPlayer().getAdventurer().getEAdventurer()
+				.equals(EAdventurer.Explorer)) {
+
+			list.addLast(getBoardPositionLandContainingTile(vector2.x - 1, vector2.y - 1));
+			list.addLast(getBoardPositionLandContainingTile(vector2.x - 1, vector2.y + 1));
+			list.addLast(getBoardPositionLandContainingTile(vector2.x + 1, vector2.y - 1));
+			list.addLast(getBoardPositionLandContainingTile(vector2.x + 1, vector2.y + 1));
+
+		}
+
+		for (BoardPositionLand boardPositionLandTemp : list.clone())
+			if (boardPositionLandTemp == null)
+				list.remove(boardPositionLandTemp);
+
+		return list;
+
+	}
+
+	private ArrayList<BoardPositionLand> getBoardPositionLandListOrthogonally(Vector2 vector2) {
+
+		ArrayList<BoardPositionLand> list = new ArrayList<>();
+
+		return list;
+
+	}
+
+	private Vector2 getBoardPositionLandCoordinatesBoard(BoardPositionLand boardPositionLand) {
+
+		for (int row = 0; row < 6; row++) {
+
+			for (int column = 0; column < 6; column++) {
+
+				BoardPosition boardPosition = BoardModel.INSTANCE.getBoard().getValue(row)
+						.getValue(column);
+
+				if (!boardPosition.equals(boardPositionLand))
+					continue;
+
+				return new Vector2(row, column);
+
+			}
+
+		}
+
+		ShutDown.INSTANCE.execute();
+		return null;
+
+	}
+
+	private BoardPositionLand getBoardPositionLandContainingCurrentPlayer() {
+
+		for (int row = 0; row < 6; row++) {
+
+			for (int column = 0; column < 6; column++) {
+
+				BoardPosition boardPosition = BoardModel.INSTANCE.getBoard().getValue(row)
+						.getValue(column);
+
+				if (boardPosition instanceof BoardPositionWater)
+					continue;
+
+				AdventurerPawn adventurerPawn = PlayersModel.INSTANCE.getCurrentPlayer()
+						.getAdventurer().getAdventurerPawn();
+
+				BoardPositionLand boardPositionLand = (BoardPositionLand) boardPosition;
+
+				if (!boardPositionLand.getListPawns().getArrayList().contains(adventurerPawn))
+					continue;
+
+				return boardPositionLand;
+
+			}
+
+		}
+
+		ShutDown.INSTANCE.execute();
+		return null;
+
+	}
+
+	private BoardPositionLand getBoardPositionLandContainingTile(double row, double column) {
+
+		if (row < 0)
+			return null;
+
+		if (column < 0)
+			return null;
+
+		if (row == 6)
+			return null;
+
+		if (column == 6)
+			return null;
+
+		BoardPosition boardPosition = BoardModel.INSTANCE.getBoard().getValue((int) row)
+				.getValue((int) column);
+
+		if (boardPosition instanceof BoardPositionWater)
+			return null;
+
+		BoardPositionLand boardPositionLand = (BoardPositionLand) boardPosition;
+
+		if (!boardPositionLand.containsTile())
+			return null;
+
+		return boardPositionLand;
+
+	}
 
 	public void drawStartingHands() {
 
