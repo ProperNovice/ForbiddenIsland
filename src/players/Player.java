@@ -1,12 +1,16 @@
 package players;
 
 import adventurers.Adventurer;
+import cards.CardTreasure;
 import listCredentials.ListCredentials;
+import utils.ListImageViewAbles;
 import utils.Vector2;
 
 public abstract class Player {
 
 	private Adventurer adventurer = null;
+	private ListImageViewAbles<CardTreasure> hand = new ListImageViewAbles<>(
+			getCardTreasureListCredentials());
 
 	public Player() {
 
@@ -26,8 +30,12 @@ public abstract class Player {
 		return this.adventurer;
 	}
 
+	public final ListImageViewAbles<CardTreasure> getHand() {
+		return this.hand;
+	}
+
 	protected abstract Vector2 getCardAdventurerCoordinates();
 
-	protected abstract Class<? extends ListCredentials> getCardTreasureCoordinates();
+	protected abstract Class<? extends ListCredentials> getCardTreasureListCredentials();
 
 }

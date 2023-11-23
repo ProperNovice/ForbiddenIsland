@@ -1,10 +1,8 @@
 package gameStates;
 
-import adventurers.AdventurerPawn;
 import business.Model;
 import cards.CardFlood;
 import cards.CardTreasure;
-import enums.EAdventurer;
 import gameStatesDefault.GameState;
 
 public class JUnit extends GameState {
@@ -18,17 +16,12 @@ public class JUnit extends GameState {
 
 		Model.INSTANCE.setUpBoard();
 		setUpPlayers();
+		Model.INSTANCE.drawStartingHands();
 
-		transferFloodCardsFromDeckToDiscardPile(9);
-		transferTreasureCardsFromDeckToDiscardPile(3);
+//		transferFloodCardsFromDeckToDiscardPile(9);
+//		transferTreasureCardsFromDeckToDiscardPile(3);
 
-		getListsManager().tiles.loadOriginal();
-
-		new AdventurerPawn(EAdventurer.Navigator);
-
-		//
-
-		getFlow().addFirst(DrawFloodCard.class, 6);
+//		getFlow().addFirst(DrawFloodCard.class, 6);
 		proceedToNextGameState();
 
 	}

@@ -13,7 +13,7 @@ public class PlayerTop extends Player {
 	}
 
 	@Override
-	protected Class<? extends ListCredentials> getCardTreasureCoordinates() {
+	protected Class<? extends ListCredentials> getCardTreasureListCredentials() {
 		return PlayerTopCardTreasure.class;
 	}
 

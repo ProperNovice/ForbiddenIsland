@@ -4,23 +4,56 @@ import adventurers.Adventurer;
 import boardPosition.BoardPosition;
 import boardPosition.BoardPositionLand;
 import boardPosition.BoardPositionWater;
+import cards.CardTreasure;
 import enums.EAdventurer;
 import enums.EIslandLocation;
+import enums.ETreasure;
 import gameStatesDefault.GameState;
-import model.AdventurersModel;
-import model.BoardModel;
-import model.PlayersModel;
+import models.AdventurersModel;
+import models.BoardModel;
+import models.PlayersModel;
 import players.Player;
 import tiles.Tile;
 import tiles.TileAdventurer;
 import utils.ArrayList;
 import utils.Flow;
+import utils.ListImageViewAbles;
 import utils.Lock;
 import utils.ShutDown;
 
 public enum Model {
 
 	INSTANCE;
+
+	public void drawStartingHands() {
+
+		for (Player player : PlayersModel.INSTANCE.getPlayers()) {
+
+			ListImageViewAbles<CardTreasure> hand = player.getHand();
+
+			while (hand.getArrayList().size() < 2) {
+
+				CardTreasure cardTreasure = getListsManager().deckTreasure.getArrayList()
+						.getRandom();
+
+				if (cardTreasure.getETreasure().equals(ETreasure.WatersRise))
+					continue;
+
+				cardTreasure.getImageView().toFront();
+				cardTreasure.getImageView().flip();
+
+				getListsManager().deckTreasure.getArrayList().remove(cardTreasure);
+				hand.getArrayList().addLast(cardTreasure);
+
+			}
+
+			hand.animateSynchronous();
+
+		}
+
+		Lock.INSTANCE.lock();
+
+	}
 
 	public BoardPositionLand getBoardPositionLandContainingTile(EIslandLocation eIslandLocation) {
 

@@ -1,4 +1,4 @@
-package model;
+package models;
 
 import players.Player;
 import players.PlayerBottom;

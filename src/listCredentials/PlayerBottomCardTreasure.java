@@ -8,6 +8,7 @@ public class PlayerBottomCardTreasure extends ListCredentials {
 
 		super.coordinatesList = Credentials.INSTANCE.playerBottomCardTreasureList;
 		super.objectsPerRow = 3;
+		super.capacity = 5;
 
 	}
 

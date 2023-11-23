@@ -1,4 +1,4 @@
-package model;
+package models;
 
 import adventurers.Adventurer;
 import enums.EAdventurer;
