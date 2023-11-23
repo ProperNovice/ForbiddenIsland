@@ -83,12 +83,28 @@ public enum Credentials {
 		x += this.dTile.x / 2;
 		this.cBoardPosition = new Vector2(x, x);
 
-		// c deck flood
+		// player top adventurer card
 
 		x = this.gapBetweenBorders;
 		x += 6 * this.dTile.x;
 		x += 6 * this.dGapBetweenComponents.x;
 		y = this.gapBetweenBorders;
+		this.playerTopAdventurerCard = new Vector2(x, y);
+
+		// player top list
+
+		x = this.playerTopAdventurerCard.x;
+		x += this.dCard.x;
+		x += this.dGapBetweenComponents.x;
+		y = this.playerTopAdventurerCard.y;
+		this.playerTopCardTreasureList = new Vector2(x, y);
+
+		// c deck flood
+
+		x = this.playerTopAdventurerCard.x;
+		y = this.playerTopAdventurerCard.y;
+		y += 2 * this.dCard.y;
+		y += 2 * this.dGapBetweenComponents.y;
 		this.cDeckFlood = new Vector2(x, y);
 
 		// c discard pile flood
@@ -112,26 +128,10 @@ public enum Credentials {
 		x += this.dGapBetweenComponents.x;
 		this.cDiscardPileTreasure = new Vector2(x, y);
 
-		// player top adventurer card
-
-		x = this.cDeckFlood.x;
-		y = this.cDeckFlood.y;
-		y += this.dCard.y;
-		y += this.dGapBetweenComponents.y;
-		this.playerTopAdventurerCard = new Vector2(x, y);
-
-		// player top list
-
-		x = this.playerTopAdventurerCard.x;
-		x += this.dCard.x;
-		x += this.dGapBetweenComponents.x;
-		y = this.playerTopAdventurerCard.y;
-		this.playerTopCardTreasureList = new Vector2(x, y);
-
 		// player bottom adventurer card
 
-		x = this.cDeckFlood.x;
-		y = this.playerTopAdventurerCard.y;
+		x = this.playerTopAdventurerCard.x;
+		y = this.cDeckFlood.y;
 		y += 2 * this.dCard.y;
 		y += 2 * this.dGapBetweenComponents.y;
 		this.playerBottomAdventurerCard = new Vector2(x, y);

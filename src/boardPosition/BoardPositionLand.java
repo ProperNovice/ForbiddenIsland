@@ -45,8 +45,8 @@ public class BoardPositionLand extends BoardPosition implements ISelectCoordinat
 	public void addAdventurerPawnAnimateSynchronous(Player player) {
 
 		this.listPawns.getArrayList().addLast(player.getAdventurer().getAdventurerPawn());
-		this.listPawns.animateSynchronous();
-//		this.listPawns.relocateImageViews();
+//		this.listPawns.animateSynchronous();
+		this.listPawns.relocateImageViews();
 
 	}
 

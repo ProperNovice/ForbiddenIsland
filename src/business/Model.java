@@ -109,7 +109,6 @@ public enum Model {
 			// set up player
 
 			Adventurer adventurer = adventurers.removeRandom();
-
 			player.setAdventurerRelocateCard(adventurer);
 
 			// set up pawn

@@ -1,9 +1,16 @@
 package gameStates;
 
+import adventurers.Adventurer;
+import boardPosition.BoardPositionLand;
 import business.Model;
 import cards.CardFlood;
 import cards.CardTreasure;
+import enums.EAdventurer;
 import gameStatesDefault.GameState;
+import models.AdventurersModel;
+import models.BoardModel;
+import models.PlayersModel;
+import players.Player;
 
 public class JUnit extends GameState {
 
@@ -12,11 +19,16 @@ public class JUnit extends GameState {
 
 		getListsManager().deckFlood.getArrayList().shuffle();
 		getListsManager().deckFlood.relocateImageViews();
+		getListsManager().deckTreasure.getArrayList().shuffle();
 		getListsManager().deckTreasure.relocateImageViews();
 
 		Model.INSTANCE.setUpBoard();
-		setUpPlayers();
-		Model.INSTANCE.drawStartingHands();
+
+		setUpPlayer(PlayersModel.INSTANCE.getPlayers().getFirst(), EAdventurer.Diver, 3, 3);
+		setUpPlayer(PlayersModel.INSTANCE.getPlayers().getLast(), EAdventurer.Messenger, 3, 3);
+
+//		Model.INSTANCE.setUpPlayers();
+//		Model.INSTANCE.drawStartingHands();
 
 //		transferFloodCardsFromDeckToDiscardPile(9);
 //		transferTreasureCardsFromDeckToDiscardPile(3);
@@ -56,9 +68,19 @@ public class JUnit extends GameState {
 
 	}
 
-	public void setUpPlayers() {
+	private void setUpPlayer(Player player, EAdventurer eAdventurer, int boardPositionX,
+			int boardPositionY) {
 
-		Model.INSTANCE.setUpPlayers();
+		Adventurer adventurer = AdventurersModel.INSTANCE.getAdventurers().getValue(eAdventurer);
+		adventurer.getAdventurerCard().getImageView().setVisible(true);
+		adventurer.getAdventurerPawn().getImageView().setVisible(true);
+
+		player.setAdventurerRelocateCard(adventurer);
+
+		BoardPositionLand boardPositionLand = (BoardPositionLand) BoardModel.INSTANCE.getBoard()
+				.getValue(boardPositionX).getValue(boardPositionY);
+
+		boardPositionLand.addAdventurerPawnAnimateSynchronous(player);
 
 	}
 
